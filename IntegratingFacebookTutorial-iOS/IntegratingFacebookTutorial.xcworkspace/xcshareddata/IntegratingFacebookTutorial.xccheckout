@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0FFDA835-058B-4CDE-92B8-ED446CA4FABE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>IntegratingFacebookTutorial</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</key>
+		<string>https://github.com/HaiMobile/Demo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>IntegratingFacebookTutorial-iOS/IntegratingFacebookTutorial.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/HaiMobile/Demo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Demo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
