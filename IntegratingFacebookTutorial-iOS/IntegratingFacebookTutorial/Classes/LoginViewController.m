@@ -44,15 +44,34 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+/*
     // Check if user is cached and linked to Facebook, if so, bypass login
     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
         [self _presentUserDetailsViewControllerAnimated:NO];
     }
+ */
 }
 
 #pragma mark -
 #pragma mark Login
+- (IBAction)AnomyousClicked:(id)sender
+{
+    if ([PFUser currentUser])
+    {
+        [self _presentUserDetailsViewControllerAnimated:NO];
+    }
+    else
+    {
+        [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (error) {
+                NSLog(@"Anonymous login failed.");
+            } else {
+                NSLog(@"Anonymous user logged in.");
+                [self _presentUserDetailsViewControllerAnimated:NO];
+            }
+        }];
+    }
+}
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
     // Set permissions required from the facebook user account
@@ -83,13 +102,21 @@
             } else {
                 NSLog(@"User with facebook logged in!");
             }
-            [self _presentUserDetailsViewControllerAnimated:YES];
+            if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
+                MLog(@"enableSignUpButton")
+            } else {
+                [self enableLogOutButton];
+            }
         }
     }];
 
     [_activityIndicator startAnimating]; // Show loading indicator until login is finished
 }
 
+- (void)enableLogOutButton
+{
+    [self _presentUserDetailsViewControllerAnimated:YES];
+}
 #pragma mark -
 #pragma mark UserDetailsViewController
 

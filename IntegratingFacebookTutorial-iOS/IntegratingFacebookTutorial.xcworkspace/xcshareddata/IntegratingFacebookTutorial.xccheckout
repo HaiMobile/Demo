@@ -12,6 +12,8 @@
 	<dict>
 		<key>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</key>
 		<string>https://github.com/HaiMobile/Demo.git</string>
+		<key>A88CC7290A903FE3A4F55A2D5A0C99A325020580</key>
+		<string>https://github.com/HaiMobile/Git-Demo.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>IntegratingFacebookTutorial-iOS/IntegratingFacebookTutorial.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</key>
 		<string>../..</string>
+		<key>A88CC7290A903FE3A4F55A2D5A0C99A325020580</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/HaiMobile/Demo.git</string>
@@ -28,6 +32,14 @@
 	<string>6191B5A6ADD0DBB9A5BF87348C23DCEF5EA669DA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A88CC7290A903FE3A4F55A2D5A0C99A325020580</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

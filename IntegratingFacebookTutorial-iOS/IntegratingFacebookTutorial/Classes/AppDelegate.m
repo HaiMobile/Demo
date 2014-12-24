@@ -37,7 +37,8 @@
     /**
      *  Enable Local Data store
      */
-    //[Parse enableLocalDatastore];
+    [Parse enableLocalDatastore];
+    
     /**
      *  Parse ApplicationId and ClientKey
      */
@@ -48,7 +49,13 @@
      * Your Facebook application id is configured in Info.plist.
      */
     [PFFacebookUtils initializeFacebook];
-
+    
+    /**
+     *  Create Anonymous User
+     */
+    [PFUser enableAutomaticUser];
+    [[PFUser currentUser] incrementKey:@"RunCount"];
+    [[PFUser currentUser] saveInBackground];
     /**
      *  Do Tracking
      */

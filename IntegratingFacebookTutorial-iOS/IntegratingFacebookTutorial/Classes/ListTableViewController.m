@@ -8,8 +8,15 @@
 
 #import "ListTableViewController.h"
 
+#define kClassName @"ABC"
+#define kAuthor @"uuthor"
+#define kScore @"score"
+#define kLevelId @"levelId"
+#define MAX_LEVELS @50
+
 @interface ListTableViewController ()
 @property (nonatomic, strong) NSMutableArray *items;
+@property NSInteger randomNum;
 @end
 
 @implementation ListTableViewController
@@ -17,20 +24,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.items = [NSMutableArray array];
+    self.randomNum = 100;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self getAllLevelsOfCurrentUser];
+    [self syncAllLevelsOnlineToDataStore];
 }
+
+#pragma mark - Online Parse
+
 - (void)getAllLevelsOfCurrentUser
 {
     // Create a query
-    PFQuery *postQuery = [PFQuery queryWithClassName:@"Level"];
+    PFQuery *postQuery = [PFQuery queryWithClassName:kClassName];
     
     // Follow relationship
-    [postQuery whereKey:@"author" equalTo:[PFUser currentUser]];
+    [postQuery whereKey:kAuthor equalTo:[PFUser currentUser]];
     
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -39,6 +50,74 @@
         }
     }];
     
+}
+
+#pragma mark - Datastore parse
+
+- (void)syncAllLevelsOnlineToDataStore
+{
+    PFQuery *query = [PFQuery queryWithClassName:kClassName];
+    [query whereKey:kAuthor equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            if (objects.count >0)
+            {
+                [PFObject pinAllInBackground:objects block:^(BOOL succeeded, NSError *error) {
+                    [self getAllLevelsFromDataStore];
+                }];
+            }
+            else
+            {
+                [self getAllLevelsFromDataStore];
+            }
+        }
+    }];
+}
+- (void)getAllLevelsFromDataStore
+{
+    MLog(@"Get All Data from Datastore ...");
+    PFQuery *query = [PFQuery queryWithClassName:kClassName];
+    [query fromLocalDatastore];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            [self.items setArray:objects];
+            if (self.items.count == 0)
+            {
+                MLog(@"There are no data in Datastore ...");
+                [self storeAllLevelsToDataStore];
+            }
+            else
+            {
+                /**
+                 *  Pull Data to layout
+                 */
+                MLog(@"Pull data To UI ...");
+                [self.tableView reloadData];
+            }
+        }
+    }];
+}
+
+- (void)storeAllLevelsToDataStore
+{
+    NSMutableArray *levels = [NSMutableArray array];
+    for (int i=0; i<MAX_LEVELS.integerValue; i++)
+    {
+        PFObject *level = [PFObject objectWithClassName:kClassName];
+        level[kScore] = @0;
+        level[kLevelId] = [NSNumber numberWithInteger:i+1];
+        level[kAuthor] = [PFUser currentUser];
+        [levels addObject:level];
+    }
+    [PFObject pinAllInBackground:levels block:^(BOOL succeeded, NSError *error) {
+        if (!error)
+        {
+            MLog(@"Created Levels in DataStore ...");
+            [self getAllLevelsFromDataStore];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,10 +150,10 @@
     
     PFObject *object = self.items[indexPath.row];
     
-    MLog(@"Object:%@", object);
+    //MLog(@"Object:%@", object);
     // Configure the cell...
-    cell.textLabel.text = @"ass";//[NSString stringWithFormat:@"Item:%@",object[@"levelId"]];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",object[@"score"]];
+    cell.textLabel.text = [NSString stringWithFormat:@"Item:%@",object[kLevelId]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",object[kScore]];
     return cell;
 }
 
@@ -118,14 +197,27 @@
 
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     PFObject *object = self.items[indexPath.row];
-    object[@"score"] = @11111;
+    object[kScore] = [NSNumber numberWithInteger:self.randomNum++];
+    object[kAuthor] = [PFUser currentUser];
+    MLog(@"User:%@", object[kAuthor]);
+    
+    [object saveEventually:^(BOOL succeeded, NSError *error) {
+        if (!error)
+        {
+            MLog(@"Save Row %@ successful!", object[kLevelId]);
+            [self.tableView reloadData];
+        }
+    }];
+    /*
     [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error)
         {
             MLog(@"Save Row %@ successful!", object[@"levelId"]);
         }
     }];
+     */
 }
 
 
@@ -140,7 +232,7 @@
 */
 - (void)saveScore:(NSNumber*)score toLevel:(NSNumber*)levelId
 {
-    PFObject *level = [PFObject objectWithClassName:@"Level"];
+    PFObject *level = [PFObject objectWithClassName:kClassName];
     level[@"levelId"] = levelId;
     level[@"score"] = @1337;
     level[@"author"] = [PFUser currentUser];
