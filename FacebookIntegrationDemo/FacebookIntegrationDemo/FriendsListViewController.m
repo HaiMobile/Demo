@@ -8,6 +8,7 @@
 
 #import "FriendsListViewController.h"
 #import "FriendlistTableViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface FriendsListViewController ()
 @property (nonatomic, strong)FriendlistTableViewCell *friendListCell;
@@ -89,11 +90,15 @@
     }
     NSDictionary<FBGraphUser> *friend = self.friendslist[indexPath.row];
     NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
+    [cell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:friendProfilePhotoURLString]
+                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                                      MLog(@"Set image %@ successful!", image)
+                                  }];
+    
     MLog(@"Name:%@, url:%@", friend.name, friendProfilePhotoURLString);
-    cell.thumbImageView.image = [UIImage imageWithContentsOfFile:friendProfilePhotoURLString];
     cell.titleLabel.text = friend.name;
     // Configure the cell...
-    
+    //https://developers.facebook.com/docs/games/requests/v2.2
     return cell;
 }
 
