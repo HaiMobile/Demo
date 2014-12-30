@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42811A46888654EAF0A18E48 /* libPods-FacebookIntegrationDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 306D6077FF1EB97672BFD593 /* libPods-FacebookIntegrationDemo.a */; };
+		672CF2DB1A52A020002286A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF2DA1A52A020002286A8 /* main.m */; };
+		672CF2DE1A52A020002286A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF2DD1A52A020002286A8 /* AppDelegate.m */; };
+		672CF2E11A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 672CF2DF1A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodeld */; };
+		672CF2E71A52A020002286A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 672CF2E51A52A020002286A8 /* Main.storyboard */; };
+		672CF2E91A52A020002286A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 672CF2E81A52A020002286A8 /* Images.xcassets */; };
+		672CF2EC1A52A020002286A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 672CF2EA1A52A020002286A8 /* LaunchScreen.xib */; };
+		672CF2F81A52A020002286A8 /* FacebookIntegrationDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF2F71A52A020002286A8 /* FacebookIntegrationDemoTests.m */; };
+		672CF3031A52A069002286A8 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF3021A52A069002286A8 /* RootViewController.m */; };
+		672CF3061A52A087002286A8 /* FriendsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF3051A52A087002286A8 /* FriendsListViewController.m */; };
+		672CF3091A52A0A7002286A8 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF3081A52A0A7002286A8 /* NotificationViewController.m */; };
+		672CF30C1A52A0EA002286A8 /* FriendsScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF30B1A52A0EA002286A8 /* FriendsScoreViewController.m */; };
+		672CF3111A52AA1D002286A8 /* FriendlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF3101A52AA1D002286A8 /* FriendlistTableViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		672CF2F21A52A020002286A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 672CF2CD1A52A020002286A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 672CF2D41A52A020002286A8;
+			remoteInfo = FacebookIntegrationDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		306D6077FF1EB97672BFD593 /* libPods-FacebookIntegrationDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FacebookIntegrationDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B8AD2D28B900D88750261C7 /* Pods-FacebookIntegrationDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacebookIntegrationDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FacebookIntegrationDemo/Pods-FacebookIntegrationDemo.release.xcconfig"; sourceTree = "<group>"; };
+		672CF2D51A52A020002286A8 /* FacebookIntegrationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacebookIntegrationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		672CF2D91A52A020002286A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		672CF2DA1A52A020002286A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		672CF2DC1A52A020002286A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		672CF2DD1A52A020002286A8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		672CF2E01A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FacebookIntegrationDemo.xcdatamodel; sourceTree = "<group>"; };
+		672CF2E61A52A020002286A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		672CF2E81A52A020002286A8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		672CF2EB1A52A020002286A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		672CF2F11A52A020002286A8 /* FacebookIntegrationDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacebookIntegrationDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		672CF2F61A52A020002286A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		672CF2F71A52A020002286A8 /* FacebookIntegrationDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FacebookIntegrationDemoTests.m; sourceTree = "<group>"; };
+		672CF3011A52A069002286A8 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		672CF3021A52A069002286A8 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		672CF3041A52A087002286A8 /* FriendsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsListViewController.h; sourceTree = "<group>"; };
+		672CF3051A52A087002286A8 /* FriendsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsListViewController.m; sourceTree = "<group>"; };
+		672CF3071A52A0A7002286A8 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		672CF3081A52A0A7002286A8 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		672CF30A1A52A0EA002286A8 /* FriendsScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsScoreViewController.h; sourceTree = "<group>"; };
+		672CF30B1A52A0EA002286A8 /* FriendsScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsScoreViewController.m; sourceTree = "<group>"; };
+		672CF30D1A52A2FB002286A8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		672CF30F1A52AA1D002286A8 /* FriendlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendlistTableViewCell.h; sourceTree = "<group>"; };
+		672CF3101A52AA1D002286A8 /* FriendlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendlistTableViewCell.m; sourceTree = "<group>"; };
+		6E8EEE6C5A33C004ADF624E1 /* Pods-FacebookIntegrationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacebookIntegrationDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FacebookIntegrationDemo/Pods-FacebookIntegrationDemo.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		672CF2D21A52A020002286A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42811A46888654EAF0A18E48 /* libPods-FacebookIntegrationDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		672CF2EE1A52A020002286A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		672CF2CC1A52A020002286A8 = {
+			isa = PBXGroup;
+			children = (
+				672CF2D71A52A020002286A8 /* FacebookIntegrationDemo */,
+				672CF2F41A52A020002286A8 /* FacebookIntegrationDemoTests */,
+				672CF2D61A52A020002286A8 /* Products */,
+				E91026BA0B75508ED5E29B8D /* Pods */,
+				B0981812E1527BDA9F7D3415 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		672CF2D61A52A020002286A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				672CF2D51A52A020002286A8 /* FacebookIntegrationDemo.app */,
+				672CF2F11A52A020002286A8 /* FacebookIntegrationDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		672CF2D71A52A020002286A8 /* FacebookIntegrationDemo */ = {
+			isa = PBXGroup;
+			children = (
+				672CF30E1A52AA16002286A8 /* cells */,
+				672CF2DC1A52A020002286A8 /* AppDelegate.h */,
+				672CF2DD1A52A020002286A8 /* AppDelegate.m */,
+				672CF3011A52A069002286A8 /* RootViewController.h */,
+				672CF3021A52A069002286A8 /* RootViewController.m */,
+				672CF3041A52A087002286A8 /* FriendsListViewController.h */,
+				672CF3051A52A087002286A8 /* FriendsListViewController.m */,
+				672CF3071A52A0A7002286A8 /* NotificationViewController.h */,
+				672CF3081A52A0A7002286A8 /* NotificationViewController.m */,
+				672CF30A1A52A0EA002286A8 /* FriendsScoreViewController.h */,
+				672CF30B1A52A0EA002286A8 /* FriendsScoreViewController.m */,
+				672CF2E51A52A020002286A8 /* Main.storyboard */,
+				672CF2E81A52A020002286A8 /* Images.xcassets */,
+				672CF2EA1A52A020002286A8 /* LaunchScreen.xib */,
+				672CF2DF1A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodeld */,
+				672CF2D81A52A020002286A8 /* Supporting Files */,
+			);
+			path = FacebookIntegrationDemo;
+			sourceTree = "<group>";
+		};
+		672CF2D81A52A020002286A8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				672CF30D1A52A2FB002286A8 /* PrefixHeader.pch */,
+				672CF2D91A52A020002286A8 /* Info.plist */,
+				672CF2DA1A52A020002286A8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		672CF2F41A52A020002286A8 /* FacebookIntegrationDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				672CF2F71A52A020002286A8 /* FacebookIntegrationDemoTests.m */,
+				672CF2F51A52A020002286A8 /* Supporting Files */,
+			);
+			path = FacebookIntegrationDemoTests;
+			sourceTree = "<group>";
+		};
+		672CF2F51A52A020002286A8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				672CF2F61A52A020002286A8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		672CF30E1A52AA16002286A8 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				672CF30F1A52AA1D002286A8 /* FriendlistTableViewCell.h */,
+				672CF3101A52AA1D002286A8 /* FriendlistTableViewCell.m */,
+			);
+			name = cells;
+			sourceTree = "<group>";
+		};
+		B0981812E1527BDA9F7D3415 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				306D6077FF1EB97672BFD593 /* libPods-FacebookIntegrationDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E91026BA0B75508ED5E29B8D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E8EEE6C5A33C004ADF624E1 /* Pods-FacebookIntegrationDemo.debug.xcconfig */,
+				4B8AD2D28B900D88750261C7 /* Pods-FacebookIntegrationDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		672CF2D41A52A020002286A8 /* FacebookIntegrationDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 672CF2FB1A52A020002286A8 /* Build configuration list for PBXNativeTarget "FacebookIntegrationDemo" */;
+			buildPhases = (
+				C0581CB066E5491A717AEB2D /* Check Pods Manifest.lock */,
+				672CF2D11A52A020002286A8 /* Sources */,
+				672CF2D21A52A020002286A8 /* Frameworks */,
+				672CF2D31A52A020002286A8 /* Resources */,
+				A2DE3C06C0C4A1E35DFC531F /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FacebookIntegrationDemo;
+			productName = FacebookIntegrationDemo;
+			productReference = 672CF2D51A52A020002286A8 /* FacebookIntegrationDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		672CF2F01A52A020002286A8 /* FacebookIntegrationDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 672CF2FE1A52A020002286A8 /* Build configuration list for PBXNativeTarget "FacebookIntegrationDemoTests" */;
+			buildPhases = (
+				672CF2ED1A52A020002286A8 /* Sources */,
+				672CF2EE1A52A020002286A8 /* Frameworks */,
+				672CF2EF1A52A020002286A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				672CF2F31A52A020002286A8 /* PBXTargetDependency */,
+			);
+			name = FacebookIntegrationDemoTests;
+			productName = FacebookIntegrationDemoTests;
+			productReference = 672CF2F11A52A020002286A8 /* FacebookIntegrationDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		672CF2CD1A52A020002286A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = s4world;
+				TargetAttributes = {
+					672CF2D41A52A020002286A8 = {
+						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = ZP89644Z7B;
+					};
+					672CF2F01A52A020002286A8 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 672CF2D41A52A020002286A8;
+					};
+				};
+			};
+			buildConfigurationList = 672CF2D01A52A020002286A8 /* Build configuration list for PBXProject "FacebookIntegrationDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 672CF2CC1A52A020002286A8;
+			productRefGroup = 672CF2D61A52A020002286A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				672CF2D41A52A020002286A8 /* FacebookIntegrationDemo */,
+				672CF2F01A52A020002286A8 /* FacebookIntegrationDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		672CF2D31A52A020002286A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				672CF2E71A52A020002286A8 /* Main.storyboard in Resources */,
+				672CF2EC1A52A020002286A8 /* LaunchScreen.xib in Resources */,
+				672CF2E91A52A020002286A8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		672CF2EF1A52A020002286A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A2DE3C06C0C4A1E35DFC531F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FacebookIntegrationDemo/Pods-FacebookIntegrationDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0581CB066E5491A717AEB2D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		672CF2D11A52A020002286A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				672CF2DE1A52A020002286A8 /* AppDelegate.m in Sources */,
+				672CF2DB1A52A020002286A8 /* main.m in Sources */,
+				672CF30C1A52A0EA002286A8 /* FriendsScoreViewController.m in Sources */,
+				672CF3111A52AA1D002286A8 /* FriendlistTableViewCell.m in Sources */,
+				672CF3061A52A087002286A8 /* FriendsListViewController.m in Sources */,
+				672CF3031A52A069002286A8 /* RootViewController.m in Sources */,
+				672CF2E11A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodeld in Sources */,
+				672CF3091A52A0A7002286A8 /* NotificationViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		672CF2ED1A52A020002286A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				672CF2F81A52A020002286A8 /* FacebookIntegrationDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		672CF2F31A52A020002286A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 672CF2D41A52A020002286A8 /* FacebookIntegrationDemo */;
+			targetProxy = 672CF2F21A52A020002286A8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		672CF2E51A52A020002286A8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				672CF2E61A52A020002286A8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		672CF2EA1A52A020002286A8 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				672CF2EB1A52A020002286A8 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		672CF2F91A52A020002286A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		672CF2FA1A52A020002286A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		672CF2FC1A52A020002286A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E8EEE6C5A33C004ADF624E1 /* Pods-FacebookIntegrationDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = FacebookIntegrationDemo/PrefixHeader.pch;
+				INFOPLIST_FILE = FacebookIntegrationDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		672CF2FD1A52A020002286A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B8AD2D28B900D88750261C7 /* Pods-FacebookIntegrationDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PREFIX_HEADER = FacebookIntegrationDemo/PrefixHeader.pch;
+				INFOPLIST_FILE = FacebookIntegrationDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		672CF2FF1A52A020002286A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FacebookIntegrationDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FacebookIntegrationDemo.app/FacebookIntegrationDemo";
+			};
+			name = Debug;
+		};
+		672CF3001A52A020002286A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FacebookIntegrationDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FacebookIntegrationDemo.app/FacebookIntegrationDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		672CF2D01A52A020002286A8 /* Build configuration list for PBXProject "FacebookIntegrationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				672CF2F91A52A020002286A8 /* Debug */,
+				672CF2FA1A52A020002286A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		672CF2FB1A52A020002286A8 /* Build configuration list for PBXNativeTarget "FacebookIntegrationDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				672CF2FC1A52A020002286A8 /* Debug */,
+				672CF2FD1A52A020002286A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		672CF2FE1A52A020002286A8 /* Build configuration list for PBXNativeTarget "FacebookIntegrationDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				672CF2FF1A52A020002286A8 /* Debug */,
+				672CF3001A52A020002286A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		672CF2DF1A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				672CF2E01A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodel */,
+			);
+			currentVersion = 672CF2E01A52A020002286A8 /* FacebookIntegrationDemo.xcdatamodel */;
+			path = FacebookIntegrationDemo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 672CF2CD1A52A020002286A8 /* Project object */;
+}

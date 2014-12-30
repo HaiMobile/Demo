@@ -75,8 +75,13 @@
 
 - (void)fbFriendList:(id)sender
 {
+    /*
     ListTableViewController *viewController = [[ListTableViewController alloc] initWithNibName:@"ListTableViewController" bundle:nil];
     [self.navigationController pushViewController:viewController animated:YES];
+    */
+     FriendlistViewController *viewController = [[FriendlistViewController alloc] initWithNibName:@"FriendlistViewController" bundle:nil];
+     [self.navigationController pushViewController:viewController animated:NO];
+    
 
 }
 #pragma mark -
