@@ -83,7 +83,7 @@
                 NSLog(@"User with facebook logged in!");
             }
             if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
-                MLog(@"enableSignUpButton")
+                //MLog(@"enableSignUpButton");
             } else {
                 [self enableLogOutButton];
             }
