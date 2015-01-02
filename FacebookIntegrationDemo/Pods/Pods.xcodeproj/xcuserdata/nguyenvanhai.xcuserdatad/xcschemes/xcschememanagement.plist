@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FacebookIntegrationDemo-SBJson.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-FacebookIntegrationDemo-SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,37 +47,42 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2DE6C3A94D1887C6B094E33E</key>
+		<key>01EBDE681174F318FE20B7D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3B6784D73AB5D6124BFFE0A7</key>
+		<key>10B960C41AE78681F103211B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6E21C565DE8FA850B2460DDB</key>
+		<key>527FBABCD1E57F497F850531</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F41B99751600F082265DF0C</key>
+		<key>556B70FD1E535E47D61F76F0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BD44A94A342807A05EC249AA</key>
+		<key>7C833BF33A5CDFF7E0D2A56D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0E50B129E6B48F918ECA7E5</key>
+		<key>871C7BEE682FC05E08B51010</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBFDD0748A491C300437DA17</key>
+		<key>AEC2BFDA0757EAA0B4FB2AF4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E8B0D3C21C01E38FB116C933</key>
 		<dict>
 			<key>primary</key>
 			<true/>

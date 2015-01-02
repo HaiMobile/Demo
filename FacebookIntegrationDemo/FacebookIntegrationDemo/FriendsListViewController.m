@@ -14,6 +14,9 @@
 @property (nonatomic, strong)FriendlistTableViewCell *friendListCell;
 @end
 
+static NSString* ms_nsstrFirstName;
+static FBFrictionlessRecipientCache* ms_friendCache;
+
 @implementation FriendsListViewController
 
 - (void)viewDidLoad {
@@ -115,43 +118,20 @@
 }
 
 - (IBAction)done:(id)sender {
-    [FBWebDialogs
-     presentRequestsDialogModallyWithSession:nil
-     message:@"YOUR_MESSAGE_HERE"
-     title:nil
-     parameters:nil
-     handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-         if (error) {
-             // Error launching the dialog or sending the request.
-             NSLog(@"Error sending request.");
-         } else {
-             if (result == FBWebDialogResultDialogNotCompleted) {
-                 // User clicked the "x" icon
-                 NSLog(@"User canceled request.");
-             } else {
-                 // Handle the send request callback
-                 NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
-                 if (![urlParams valueForKey:@"request"]) {
-                     // User clicked the Cancel button
-                     NSLog(@"User canceled request.");
-                 } else {
-                     // User clicked the Send button
-                     NSString *requestID = [urlParams valueForKey:@"request"];
-                     NSLog(@"Request ID: %@", requestID);
-                 }
-             }
-         }
-     }];
-}
-void FacebookController::SendRequest(NSArray* friendIDs, const int nScore)
-{
-    // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
-    NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:
-                                 @"223400030", @"286400088", @"767670639", @"516910788",
-                                 nil];
     
-    SBJsonWriter *jsonWriter = [SBJsonWriter new];
-    NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", nScore], @"challenge_score", nil];
+    // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
+    NSMutableArray *suggestedFriends = [NSMutableArray array];
+     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
+    {
+     NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
+     NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
+        [suggestedFriends addObject:friend.objectID];
+     }
+    return;
+    NSInteger nScore = 1234;
+    
+    SBJson4Writer *jsonWriter = [SBJson4Writer new];
+    NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%ld", (long)nScore], @"challenge_score", nil];
     NSString *challengeStr = [jsonWriter stringWithObject:challenge];
     
     
@@ -160,9 +140,9 @@ void FacebookController::SendRequest(NSArray* friendIDs, const int nScore)
     // 1. No additional parameters provided - enables generic Multi-friend selector
     NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      // 2. Optionally provide a 'to' param to direct the request at a specific user
-                                     [friendIDs componentsJoinedByString:@","], @"to", // Ali
+                                     //[friendIDs componentsJoinedByString:@","], @"to", // Ali
                                      // 3. Suggest friends the user may want to request, could be game context specific?
-                                     //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
+                                     [suggestedFriends componentsJoinedByString:@","], @"suggestions",
                                      challengeStr, @"data",
                                      nil];
     
@@ -175,7 +155,7 @@ void FacebookController::SendRequest(NSArray* friendIDs, const int nScore)
     [ms_friendCache prefetchAndCacheForSession:nil];
     
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:[NSString stringWithFormat:@"I just smashed %d friends! Can you beat it?", nScore]
+                                                  message:[NSString stringWithFormat:@"I just smashed %ld friends! Can you beat it?", (long)nScore]
                                                     title:@"Smashing!"
                                                parameters:params
                                                   handler:^(FBWebDialogResult result,

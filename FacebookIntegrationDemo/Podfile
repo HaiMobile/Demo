@@ -9,7 +9,7 @@ pod 'Parse'
 pod 'ParseFacebookUtils'
 pod 'SDWebImage'
 pod 'Reachability'
-
+pod 'SBJson'
 end
 
 target 'FacebookIntegrationDemoTests' do
