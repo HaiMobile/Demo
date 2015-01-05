@@ -29,9 +29,20 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     if ([PFUser currentUser]) {
         //do nothing
     }
+    // Check if user is cached and linked to Facebook, if so, bypass login
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
+    {
+        [self getFBFriendsList];
+    }
+    else
+    {
+        NSAssert(1, @"No FB Login");
+    }
     
-    /* make the API call */
-    
+}
+
+- (void)getFBFriendsList
+{
     [FBRequestConnection startWithGraphPath:@"/me/invitable_friends"
                                  parameters:nil
                                  HTTPMethod:@"GET"
@@ -47,16 +58,9 @@ static FBFrictionlessRecipientCache* ms_friendCache;
          NSLog(@"Format: %@", friends[0]);
          self.friendslist = [NSMutableArray arrayWithArray:friends];
          [self.tableView reloadData];
-         /*
-          for (NSDictionary<FBGraphUser>* friend in friends) {
-          NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
-          NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
-          }
-          */
          
      }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -120,15 +124,15 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 - (IBAction)done:(id)sender {
     
     // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
-    NSMutableArray *suggestedFriends = [NSMutableArray array];
+    NSMutableArray *friendIDs = [NSMutableArray array];
+    [friendIDs addObject:@"1597812257117573"];
      for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
      NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
      NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
-        [suggestedFriends addObject:friend.objectID];
+        //[friendIDs addObject:friend.objectID];
      }
-    return;
-    NSInteger nScore = 1234;
+    NSInteger nScore = 0000;
     
     SBJson4Writer *jsonWriter = [SBJson4Writer new];
     NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%ld", (long)nScore], @"challenge_score", nil];
@@ -140,9 +144,9 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     // 1. No additional parameters provided - enables generic Multi-friend selector
     NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                      // 2. Optionally provide a 'to' param to direct the request at a specific user
-                                     //[friendIDs componentsJoinedByString:@","], @"to", // Ali
+                                     [friendIDs componentsJoinedByString:@","], @"to", // Ali
                                      // 3. Suggest friends the user may want to request, could be game context specific?
-                                     [suggestedFriends componentsJoinedByString:@","], @"suggestions",
+                                     //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
                                      challengeStr, @"data",
                                      nil];
     

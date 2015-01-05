@@ -57,7 +57,7 @@
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
     // Set permissions required from the facebook user account
-    NSArray *permissionsArray = @[ @"public_profile", @"user_friends"];
+    NSArray *permissionsArray = @[ @"public_profile", @"email", @"user_friends"];
     
     // Login PFUser using Facebook
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {

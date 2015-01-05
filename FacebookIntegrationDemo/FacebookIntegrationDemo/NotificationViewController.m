@@ -17,8 +17,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
+    {
+        [self getFBFriendsList];
+    }
+    else
+    {
+        NSAssert(1, @"No FB Login");
+    }
 }
 
+- (void)getFBFriendsList
+{
+    [FBRequestConnection startWithGraphPath:@"/me/invitable_friends"
+                                 parameters:nil
+                                 HTTPMethod:@"GET"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              )
+     {
+         /* handle the result */
+         NSArray* friends = [result objectForKey:@"data"];
+         NSLog(@"Found: %lu friends", (unsigned long)friends.count);
+         NSLog(@"Format: %@", friends[0]);
+//         self.friendslist = [NSMutableArray arrayWithArray:friends];
+//         [self.tableView reloadData];
+         
+     }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
