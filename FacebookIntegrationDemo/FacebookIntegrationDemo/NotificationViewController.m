@@ -29,23 +29,20 @@
 
 - (void)getFBFriendsList
 {
-    [FBRequestConnection startWithGraphPath:@"/me/invitable_friends"
+    [FBRequestConnection startWithGraphPath:@"/me/apprequests"
                                  parameters:nil
                                  HTTPMethod:@"GET"
                           completionHandler:^(
                                               FBRequestConnection *connection,
                                               id result,
                                               NSError *error
-                                              )
-     {
-         /* handle the result */
-         NSArray* friends = [result objectForKey:@"data"];
-         NSLog(@"Found: %lu friends", (unsigned long)friends.count);
-         NSLog(@"Format: %@", friends[0]);
-//         self.friendslist = [NSMutableArray arrayWithArray:friends];
-//         [self.tableView reloadData];
-         
-     }];
+                                              ) {
+                              /* handle the result */
+                              NSArray* friends = [result objectForKey:@"data"];
+                              NSLog(@"Found: %lu friends", (unsigned long)friends.count);
+                              
+                          }];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
