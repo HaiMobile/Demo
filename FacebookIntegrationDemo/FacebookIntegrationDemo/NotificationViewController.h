@@ -10,4 +10,8 @@
 
 @interface NotificationViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *friendslist;
+- (IBAction)done:(id)sender;
+
 @end
