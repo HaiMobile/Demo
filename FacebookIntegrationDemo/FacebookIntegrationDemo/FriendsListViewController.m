@@ -120,23 +120,74 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     }
     return params;
 }
+#define kRequestID @"RequestID"
+#define kAskLiveId @"AskLive"
+#define kAskLiveMessage @"Give me a hand"
+#define kInviteId @"Invite"
+#define kInviteMessage @"Come join me in Light"
 
-- (IBAction)done:(id)sender {
+- (IBAction)sendInviteClicked:(id)sender {
+    NSMutableDictionary* params;
     
+    NSMutableArray *friendIDs = [NSMutableArray array];
+    [friendIDs addObject:@"1597812257117573"];
+    for (NSDictionary<FBGraphUser>* friend in self.friendslist)
+    {
+        //NSLog(@"Friend named %@ with id %@", friend.name, friend.objectID);
+        //[friendIDs addObject:friend.objectID];
+    }
+
+    if (friendIDs) {
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys: [friendIDs componentsJoinedByString:@","], @"to", nil];
+    }
+    else {
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys: nil];
+    }
+    
+    NSLog(@"Send To %@ ", friendIDs);
+    
+    if (ms_friendCache == NULL) {
+        ms_friendCache = [[FBFrictionlessRecipientCache alloc] init];
+    }
+    
+    [ms_friendCache prefetchAndCacheForSession:nil];
+    
+    
+    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                  message:kInviteMessage
+                                                    title:@"Smashing Invite!"
+                                               parameters:params
+                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                      if (error) {
+                                                          // Case A: Error launching the dialog or sending request.
+                                                          NSLog(@"Error sending request.");
+                                                      } else {
+                                                          if (result == FBWebDialogResultDialogNotCompleted) {
+                                                              // Case B: User clicked the "x" icon
+                                                              NSLog(@"User canceled request.");
+                                                          } else {
+                                                              NSLog(@"Request Sent.");
+                                                          }
+                                                      }}
+                                              friendCache:ms_friendCache];
+}
+
+- (IBAction)askLive:(id)sender
+{
     // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
     NSMutableArray *friendIDs = [NSMutableArray array];
     [friendIDs addObject:@"1597812257117573"];
-     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
+    for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
-     NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
-     NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
+//        NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
+//        NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
         //[friendIDs addObject:friend.objectID];
-     }
-    NSInteger nScore = 0000;
-    
-    SBJson4Writer *jsonWriter = [SBJson4Writer new];
-    NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%ld", (long)nScore], @"challenge_score", nil];
-    NSString *challengeStr = [jsonWriter stringWithObject:challenge];
+    }
+     NSLog(@"Send To %@ ", friendIDs);
+//    
+//    SBJson4Writer *jsonWriter = [SBJson4Writer new];
+//    NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%@", @YES], kAskLiveId, nil];
+    NSString *challengeStr = kAskLiveId;//[jsonWriter stringWithObject:challenge];
     
     
     // Create a dictionary of key/value pairs which are the parameters of the dialog
@@ -147,7 +198,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                      [friendIDs componentsJoinedByString:@","], @"to", // Ali
                                      // 3. Suggest friends the user may want to request, could be game context specific?
                                      //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
-                                     challengeStr, @"data",
+                                     challengeStr, kRequestID,
                                      nil];
     
     
@@ -159,7 +210,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     [ms_friendCache prefetchAndCacheForSession:nil];
     
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:[NSString stringWithFormat:@"I just smashed %ld friends! Can you beat it?", (long)nScore]
+                                                  message:kAskLiveMessage
                                                     title:@"Smashing!"
                                                parameters:params
                                                   handler:^(FBWebDialogResult result,

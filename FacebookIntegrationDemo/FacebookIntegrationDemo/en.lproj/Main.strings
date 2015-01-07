@@ -1,0 +1,18 @@
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "1wK-7d-FHb"; */
+"1wK-7d-FHb.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "Log In"; ObjectID = "Gyg-LT-KPb"; */
+"Gyg-LT-KPb.normalTitle" = "Log In";
+
+/* Class = "IBUIButton"; selectedTitle = "Login"; ObjectID = "Gyg-LT-KPb"; */
+"Gyg-LT-KPb.selectedTitle" = "Login";
+
+/* Class = "IBUIButton"; normalTitle = "Send"; ObjectID = "NqM-Du-Sda"; */
+"NqM-Du-Sda.normalTitle" = "Send";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "h8W-fi-YOh"; */
+"h8W-fi-YOh.text" = "Label";
+
+/* Class = "IBUIButton"; normalTitle = "notify"; ObjectID = "isk-TQ-OxV"; */
+"isk-TQ-OxV.normalTitle" = "notify";

@@ -80,11 +80,11 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqM-Du-Sda">
                                 <rect key="frame" x="277" y="90" width="46" height="30"/>
-                                <state key="normal" title="Send">
+                                <state key="normal" title="Ask">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="done:" destination="k1O-DL-yBc" eventType="touchUpInside" id="Jkb-2q-LQk"/>
+                                    <action selector="askLive:" destination="k1O-DL-yBc" eventType="touchUpInside" id="roI-fG-XLc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isk-TQ-OxV">
@@ -94,6 +94,15 @@
                                 </state>
                                 <connections>
                                     <segue destination="3Tr-0X-Imy" kind="show" id="Zqv-a7-9iO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNu-2m-n3W">
+                                <rect key="frame" x="111" y="115" width="81" height="30"/>
+                                <state key="normal" title="SendIn">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendInviteClicked:" destination="k1O-DL-yBc" eventType="touchUpInside" id="WdY-TV-5tK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -115,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3P7-UV-UeC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="427" y="-66"/>
+            <point key="canvasLocation" x="392" y="-66"/>
         </scene>
         <!--Friends Score View Controller-->
         <scene sceneID="pTG-sx-Z9U">
@@ -151,7 +160,7 @@
                                 <rect key="frame" x="-8" y="-8" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="friendlistcell" id="Cng-r5-ZEz" customClass="FriendlistTableViewCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="messagecell" id="Cng-r5-ZEz" customClass="MessageTableViewCell">
                                         <rect key="frame" x="0.0" y="278" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cng-r5-ZEz" id="3gV-rj-Zqi">

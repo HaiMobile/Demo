@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *friendslist;
-- (IBAction)done:(id)sender;
+- (IBAction)sendInviteClicked:(id)sender;
+- (IBAction)askLive:(id)sender;
 
 @end

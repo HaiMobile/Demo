@@ -7,12 +7,12 @@
 //
 
 #import "NotificationViewController.h"
-#import "FriendlistTableViewCell.h"
+#import "MessageTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface NotificationViewController ()
 
-@property (nonatomic, strong)FriendlistTableViewCell *friendListCell;
+@property (nonatomic, strong)MessageTableViewCell *messageCell;
 
 @end
 static FBFrictionlessRecipientCache* ms_friendCache;
@@ -79,24 +79,29 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FriendlistTableViewCell *cell = (FriendlistTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"friendlistcell" forIndexPath:indexPath];
+    MessageTableViewCell *cell = (MessageTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"messagecell" forIndexPath:indexPath];
     if (cell == nil)
     {
-        cell = [[FriendlistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"friendlistcell"];
+        cell = [[MessageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"messagecell"];
     }
-    NSDictionary<FBGraphUser> *friend = self.friendslist[indexPath.row];
-    NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
+    NSDictionary<FBGraphObject> *object = self.friendslist[indexPath.row];
+    
+    NSLog(@"message:%d - %@ ", indexPath.row, object);
+    /*
+    NSString *friendProfilePhotoURLString = object[@"picture"][@"data"][@"url"];
     [cell.thumbImageView sd_setImageWithURL:[NSURL URLWithString:friendProfilePhotoURLString]
                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                       //MLog(@"Set image %@ successful!", image);
                                   }];
-    
+    */
     //MLog(@"Name:%@, url:%@", friend.name, friendProfilePhotoURLString);
-    cell.titleLabel.text = friend.name;
+    NSString *message = [NSString stringWithFormat:@"%@ %@", object[@"from"][@"name"], object[@"message"]];
+    cell.titleLabel.text = message;
     // Configure the cell...
     //https://developers.facebook.com/docs/games/requests/v2.2
     return cell;
 }
+
 
 - (NSDictionary*)parseURLParams:(NSString *)query {
     NSArray *pairs = [query componentsSeparatedByString:@"&"];

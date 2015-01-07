@@ -20,6 +20,7 @@
 		672CF3091A52A0A7002286A8 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF3081A52A0A7002286A8 /* NotificationViewController.m */; };
 		672CF30C1A52A0EA002286A8 /* FriendsScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF30B1A52A0EA002286A8 /* FriendsScoreViewController.m */; };
 		672CF3111A52AA1D002286A8 /* FriendlistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 672CF3101A52AA1D002286A8 /* FriendlistTableViewCell.m */; };
+		67D162E61A5CE695003CF938 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67D162E51A5CE695003CF938 /* MessageTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,9 @@
 		672CF30D1A52A2FB002286A8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		672CF30F1A52AA1D002286A8 /* FriendlistTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendlistTableViewCell.h; sourceTree = "<group>"; };
 		672CF3101A52AA1D002286A8 /* FriendlistTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendlistTableViewCell.m; sourceTree = "<group>"; };
+		67D162E31A5CDE71003CF938 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		67D162E41A5CE695003CF938 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		67D162E51A5CE695003CF938 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		6E8EEE6C5A33C004ADF624E1 /* Pods-FacebookIntegrationDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacebookIntegrationDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FacebookIntegrationDemo/Pods-FacebookIntegrationDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,8 @@
 			children = (
 				672CF30F1A52AA1D002286A8 /* FriendlistTableViewCell.h */,
 				672CF3101A52AA1D002286A8 /* FriendlistTableViewCell.m */,
+				67D162E41A5CE695003CF938 /* MessageTableViewCell.h */,
+				67D162E51A5CE695003CF938 /* MessageTableViewCell.m */,
 			);
 			name = cells;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 			files = (
 				672CF2DE1A52A020002286A8 /* AppDelegate.m in Sources */,
 				672CF2DB1A52A020002286A8 /* main.m in Sources */,
+				67D162E61A5CE695003CF938 /* MessageTableViewCell.m in Sources */,
 				672CF30C1A52A0EA002286A8 /* FriendsScoreViewController.m in Sources */,
 				672CF3111A52AA1D002286A8 /* FriendlistTableViewCell.m in Sources */,
 				672CF3061A52A087002286A8 /* FriendsListViewController.m in Sources */,
@@ -346,6 +353,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				672CF2E61A52A020002286A8 /* Base */,
+				67D162E31A5CDE71003CF938 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
