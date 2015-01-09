@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -223,7 +224,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyg-LT-KPb">
-                                <rect key="frame" x="281" y="259" width="151" height="43"/>
+                                <rect key="frame" x="225" y="279" width="151" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="151" id="0xz-LU-oIY"/>
                                     <constraint firstAttribute="height" constant="43" id="Q46-AU-d0M"/>
@@ -243,15 +244,26 @@
                                     <action selector="loginButtonTouchHandler:" destination="sFD-9x-DqO" eventType="touchUpInside" id="8D0-7Y-Y3i"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vtU-bk-PCZ">
+                                <rect key="frame" x="150" y="-43" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vtU-bk-PCZ" secondAttribute="height" multiplier="1:1" id="x8a-61-rFo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="Gyg-LT-KPb" secondAttribute="centerX" constant="-56.5" id="MgJ-hd-nQS"/>
-                            <constraint firstAttribute="centerY" secondItem="Gyg-LT-KPb" secondAttribute="centerY" constant="20" id="tMh-3U-TJF"/>
+                            <constraint firstAttribute="centerX" secondItem="vtU-bk-PCZ" secondAttribute="centerX" id="I01-C3-9hm"/>
+                            <constraint firstAttribute="centerX" secondItem="Gyg-LT-KPb" secondAttribute="centerX" id="MgJ-hd-nQS"/>
+                            <constraint firstAttribute="width" secondItem="vtU-bk-PCZ" secondAttribute="width" multiplier="1:0.5" id="eZi-bH-R1n"/>
+                            <constraint firstAttribute="centerY" secondItem="Gyg-LT-KPb" secondAttribute="centerY" id="tMh-3U-TJF"/>
+                            <constraint firstItem="Gyg-LT-KPb" firstAttribute="top" secondItem="vtU-bk-PCZ" secondAttribute="bottom" constant="22" id="wCJ-vN-4bW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Z00-l9-w9f"/>
                     <connections>
+                        <outlet property="imageView" destination="vtU-bk-PCZ" id="7PM-ox-rQD"/>
+                        <outlet property="loginButton" destination="Gyg-LT-KPb" id="nJh-JN-dGQ"/>
                         <segue destination="k1O-DL-yBc" kind="show" identifier="friendlistsegue" id="svQ-cS-bh3"/>
                     </connections>
                 </viewController>

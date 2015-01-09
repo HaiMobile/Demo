@@ -55,7 +55,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
          /* handle the result */
          NSArray* friends = [result objectForKey:@"data"];
          NSLog(@"Found: %lu friends", (unsigned long)friends.count);
-         NSLog(@"Format: %@", friends[0]);
+         NSLog(@"Format: %@", friends);
          self.friendslist = [NSMutableArray arrayWithArray:friends];
          [self.tableView reloadData];
          
@@ -130,7 +130,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     NSMutableDictionary* params;
     
     NSMutableArray *friendIDs = [NSMutableArray array];
-    [friendIDs addObject:@"1597812257117573"];
+    [friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
         //NSLog(@"Friend named %@ with id %@", friend.name, friend.objectID);
@@ -155,7 +155,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
                                                   message:kInviteMessage
-                                                    title:@"Smashing Invite!"
+                                                    title:@"Light ME"
                                                parameters:params
                                                   handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
                                                       if (error) {
@@ -176,7 +176,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 {
     // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
     NSMutableArray *friendIDs = [NSMutableArray array];
-    [friendIDs addObject:@"1597812257117573"];
+    [friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
 //        NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];

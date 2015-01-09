@@ -10,6 +10,8 @@
 #import "FriendsListViewController.h"
 
 @interface RootViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 
 @end
 
@@ -22,10 +24,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-     // Check if user is cached and linked to Facebook, if so, bypass login
-     if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-     [self gotoFriendList:NO];
-     }
     
 }
 - (void)didReceiveMemoryWarning {
@@ -56,6 +54,12 @@
 }
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
+    
+    // Check if user is cached and linked to Facebook, if so, bypass login
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self gotoFriendList:YES];
+        return;
+    }
     // Set permissions required from the facebook user account
     NSArray *permissionsArray = @[ @"public_profile", @"email", @"user_friends"];
     
@@ -94,7 +98,7 @@
 
 - (void)enableLogOutButton
 {
-    [self gotoFriendList:YES];
+    [self.loginButton setTitle:@"Log out!" forState:UIControlStateNormal];
 }
 
 #pragma mark -

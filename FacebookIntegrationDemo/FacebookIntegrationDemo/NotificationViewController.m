@@ -98,10 +98,15 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     NSString *message = [NSString stringWithFormat:@"%@ %@", object[@"from"][@"name"], object[@"message"]];
     cell.titleLabel.text = message;
     // Configure the cell...
-    //https://developers.facebook.com/docs/games/requests/v2.2
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary<FBGraphObject> *object = self.friendslist[indexPath.row];
+    NSString *stringID = object[@"id"];
+    [self deleteRequestID:[NSString stringWithFormat:@"%@", stringID]];
+}
 
 - (NSDictionary*)parseURLParams:(NSString *)query {
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
@@ -115,6 +120,25 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     return params;
 }
 
+- (void)deleteRequestID:(NSString*)requestID
+{
+    NSString *path = [NSString stringWithFormat:@"/%@", requestID];
+    [FBRequestConnection startWithGraphPath:path
+                                 parameters:nil
+                                 HTTPMethod:@"DELETE"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                              if (!error)
+                              {
+                                  MLog(@"successful!");
+                                  [self.tableView reloadData];
+                              }
+                          }];
+}
 - (IBAction)done:(id)sender {
     
     // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
