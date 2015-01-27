@@ -236,7 +236,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled" backgroundImage="login-button-small.png"/>
-                                <state key="selected" title="Login"/>
+                                <state key="selected" title="Log out!"/>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -250,9 +250,32 @@
                                     <constraint firstAttribute="width" secondItem="vtU-bk-PCZ" secondAttribute="height" multiplier="1:1" id="x8a-61-rFo"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBK-2Z-fnY">
+                                <rect key="frame" x="225" y="319" width="151" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="9hI-d6-Gwh"/>
+                                    <constraint firstAttribute="width" constant="151" id="VoC-zJ-kb0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <inset key="contentEdgeInsets" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Friend">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled" backgroundImage="login-button-small.png"/>
+                                <state key="selected" title="Log out!"/>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="FriendClicked:" destination="sFD-9x-DqO" eventType="touchUpInside" id="vf7-JJ-x1c"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NBK-2Z-fnY" firstAttribute="leading" secondItem="Gyg-LT-KPb" secondAttribute="leading" id="5O6-UX-Uoc"/>
+                            <constraint firstItem="NBK-2Z-fnY" firstAttribute="top" secondItem="vtU-bk-PCZ" secondAttribute="bottom" constant="62" id="5Ow-Mx-22u"/>
                             <constraint firstAttribute="centerX" secondItem="vtU-bk-PCZ" secondAttribute="centerX" id="I01-C3-9hm"/>
                             <constraint firstAttribute="centerX" secondItem="Gyg-LT-KPb" secondAttribute="centerX" id="MgJ-hd-nQS"/>
                             <constraint firstAttribute="width" secondItem="vtU-bk-PCZ" secondAttribute="width" multiplier="1:0.5" id="eZi-bH-R1n"/>

@@ -30,7 +30,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
         //do nothing
     }
     // Check if user is cached and linked to Facebook, if so, bypass login
-    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
+    if ([PFUser currentUser])
     {
         [self getFBFriendsList];
     }
@@ -133,7 +133,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     [friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
-        //NSLog(@"Friend named %@ with id %@", friend.name, friend.objectID);
+        NSLog(@"Friend named %@ with id %@", friend.name, friend.objectID);
         //[friendIDs addObject:friend.objectID];
     }
 

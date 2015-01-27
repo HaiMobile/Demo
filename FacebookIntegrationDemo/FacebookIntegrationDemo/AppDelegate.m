@@ -20,7 +20,7 @@
     /**
      *  Enable Local Data store
      */
-    [Parse enableLocalDatastore];
+    //[Parse enableLocalDatastore];
     
     /**
      *  Parse ApplicationId and ClientKey
@@ -36,9 +36,9 @@
     /**
      *  Create Anonymous User
      */
-    [PFUser enableAutomaticUser];
-    [[PFUser currentUser] incrementKey:@"RunCount"];
-    [[PFUser currentUser] saveInBackground];
+//    [PFUser enableAutomaticUser];
+//    [[PFUser currentUser] incrementKey:@"RunCount"];
+//    [[PFUser currentUser] saveInBackground];
     /**
      *  Do Tracking
      */
@@ -62,12 +62,14 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    MLog(@"applicationDidBecomeActive:%@", [PFFacebookUtils session]);
     [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates./*
+    MLog(@"applicationWillTerminate:%@", [PFFacebookUtils session]);
     [[PFFacebookUtils session] close];
     [self saveContext];
 }

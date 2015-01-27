@@ -34,8 +34,13 @@
 
 #pragma mark -
 #pragma mark Login
-- (IBAction)AnomyousClicked:(id)sender
+- (IBAction)FriendClicked:(id)sender
 {
+    if ([PFUser currentUser])
+    {
+        [self gotoFriendList:NO];
+    }
+    /*
     if ([PFUser currentUser])
     {
         [self gotoFriendList:NO];
@@ -51,13 +56,21 @@
             }
         }];
     }
+     */
 }
 
 - (IBAction)loginButtonTouchHandler:(id)sender  {
     
     // Check if user is cached and linked to Facebook, if so, bypass login
-    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
-        [self gotoFriendList:YES];
+    if ([PFUser currentUser])
+    {
+        [[PFFacebookUtils session] closeAndClearTokenInformation];
+        [[PFFacebookUtils session] close];
+        [[FBSession activeSession] closeAndClearTokenInformation];
+        [[FBSession activeSession] close];
+        [FBSession setActiveSession:nil];
+        [PFUser logOut];
+        [self enableLogInButton];
         return;
     }
     // Set permissions required from the facebook user account
@@ -86,11 +99,17 @@
             } else {
                 NSLog(@"User with facebook logged in!");
             }
-            if ([PFAnonymousUtils isLinkedWithUser:[PFUser currentUser]]) {
-                //MLog(@"enableSignUpButton");
-            } else {
-                [self enableLogOutButton];
-            }
+            [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                MLog(@"result;%@", result);
+                [[PFUser currentUser] setObject:result forKey:@"profile"];
+                [[PFUser currentUser]saveEventually:^(BOOL succeeded, NSError *error) {
+                    if (succeeded)
+                    {
+                        MLog(@"save profile success");
+                    }
+                }];
+            }];
+            [self enableLogOutButton];
         }
     }];
     
@@ -98,7 +117,11 @@
 
 - (void)enableLogOutButton
 {
-    [self.loginButton setTitle:@"Log out!" forState:UIControlStateNormal];
+    self.loginButton.selected = YES;
+}
+- (void)enableLogInButton
+{
+    self.loginButton.selected = NO;
 }
 
 #pragma mark -
