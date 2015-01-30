@@ -42,7 +42,7 @@
     /**
      *  Do Tracking
      */
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+   //[PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     return YES;
 }
 

@@ -43,7 +43,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 
 - (void)getFBFriendsList
 {
-    [FBRequestConnection startWithGraphPath:@"/me/invitable_friends"
+    [FBRequestConnection startWithGraphPath:@"/me/friends"
                                  parameters:nil
                                  HTTPMethod:@"GET"
                           completionHandler:^(
@@ -176,12 +176,13 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 {
     // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
     NSMutableArray *friendIDs = [NSMutableArray array];
-    [friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
+    //[friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
+    //Jena-CA: AVmJHcXV-w3HQcDW2LCLuSA5gFenGrJMFGy04CJTIO9n8Vvbq13mwI_8mwEThBwaf4TNOGmvcMb5dDAE2p_HC38QUqWR2Oh2-oIZNFCLErH5Zw
     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
-//        NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
-//        NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
-        //[friendIDs addObject:friend.objectID];
+        NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
+        NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
+        [friendIDs addObject:friend.objectID];
     }
      NSLog(@"Send To %@ ", friendIDs);
 //    

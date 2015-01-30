@@ -70,7 +70,10 @@
         [[FBSession activeSession] close];
         [FBSession setActiveSession:nil];
         [PFUser logOut];
-        [self enableLogInButton];
+        NSLog(@"User is %@", [PFUser currentUser]);
+        NSLog(@"Facebook session is %@", [PFFacebookUtils session]);
+        NSLog(@"Facebook session is %@", FBSession.activeSession.observationInfo);
+        [self.loginButton setSelected:NO];
         return;
     }
     // Set permissions required from the facebook user account
@@ -109,7 +112,7 @@
                     }
                 }];
             }];
-            [self enableLogOutButton];
+            [self.loginButton setSelected:YES];
         }
     }];
     
