@@ -74,6 +74,23 @@
     [self saveContext];
 }
 
+#pragma mark - FB Methods
+/**
+ *  App switching method to suppport FB Single sign-on
+ *
+ *  @param application       current application
+ *  @param url               The URL as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ *  @param sourceApplication The sourceApplication as passed to [UIApplicationDelegate application:openURL:sourceApplication:annotation:].
+ *  @param annotation        annotation description
+ *
+ *  @return YES if the url was intended for FB SDK, NO if not.
+ */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
+}
+
 #pragma mark - Core Data stack
 
 @synthesize managedObjectContext = _managedObjectContext;

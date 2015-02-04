@@ -125,7 +125,76 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 #define kAskLiveMessage @"Give me a hand"
 #define kInviteId @"Invite"
 #define kInviteMessage @"Come join me in Light"
+#define kItuneLink @"https://itunes.apple.com/us/app/facebook/id284882215?mt=8"
+#define kFBSharedName @"Sharing Light!"
+#define kFBCapture @"Anwsome game! Try and train your brain?"
 
+- (IBAction)shareClicked:(id)sender {
+    // Check if the Facebook app is installed and we can present the share dialog
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
+    
+    params.link = [NSURL URLWithString:kItuneLink];
+    params.name = kFBSharedName;
+    params.caption = kFBCapture;
+    params.picture = [NSURL URLWithString:@"http://i.imgur.com/g3Qc1HN.png"];
+    //params.linkDescription = @"Send links from your app using the iOS SDK.";
+
+    // If the Facebook app is installed and we can present the share dialog
+    if ([FBDialogs canPresentShareDialogWithParams:params]) {
+        // Present the share dialog
+        [FBDialogs presentShareDialogWithLink:params.link
+                                      handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                          if(error) {
+                                              NSLog(@"Error: %@", error.description);
+                                          } else {
+                                              NSLog(@"Success!");
+                                          }
+                                      }];
+    } else {
+        // Present the feed dialog
+        [self shareViaDialog];
+    }
+}
+
+- (void)shareViaDialog
+{
+    // Put together the dialog parameters
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   kFBSharedName, @"name",
+                                   kFBCapture, @"caption",
+                                   kItuneLink, @"link",
+                                   @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+                                   nil];
+    
+    // Show the feed dialog
+    [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                           parameters:params
+                                              handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                  if (error) {
+                                                      // An error occurred, we need to handle the error
+                                                      // See: https://developers.facebook.com/docs/ios/errors
+                                                      NSLog(@"Error publishing story: %@", error.description);
+                                                  } else {
+                                                      if (result == FBWebDialogResultDialogNotCompleted) {
+                                                          // User cancelled.
+                                                          NSLog(@"User cancelled.");
+                                                      } else {
+                                                          // Handle the publish feed callback
+                                                          NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                          
+                                                          if (![urlParams valueForKey:@"post_id"]) {
+                                                              // User cancelled.
+                                                              NSLog(@"User cancelled.");
+                                                              
+                                                          } else {
+                                                              // User clicked the Share button
+                                                              NSString *result = [NSString stringWithFormat: @"Posted story, id: %@", [urlParams valueForKey:@"post_id"]];
+                                                              NSLog(@"result %@", result);
+                                                          }
+                                                      }
+                                                  }
+                                              }];
+}
 - (IBAction)sendInviteClicked:(id)sender {
     NSMutableDictionary* params;
     

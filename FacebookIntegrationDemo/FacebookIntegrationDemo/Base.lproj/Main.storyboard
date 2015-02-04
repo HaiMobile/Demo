@@ -97,13 +97,22 @@
                                     <segue destination="3Tr-0X-Imy" kind="show" id="Zqv-a7-9iO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNu-2m-n3W">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNu-2m-n3W">
                                 <rect key="frame" x="111" y="115" width="81" height="30"/>
                                 <state key="normal" title="SendIn">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="sendInviteClicked:" destination="k1O-DL-yBc" eventType="touchUpInside" id="WdY-TV-5tK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCr-lU-WnU">
+                                <rect key="frame" x="190" y="115" width="81" height="30"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareClicked:" destination="k1O-DL-yBc" eventType="touchUpInside" id="z6E-dC-yIa"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -114,7 +123,9 @@
                             <constraint firstItem="NqM-Du-Sda" firstAttribute="centerX" secondItem="k6x-Sr-iyZ" secondAttribute="centerX" id="C0Q-Z2-fny"/>
                             <constraint firstItem="k6x-Sr-iyZ" firstAttribute="leading" secondItem="PBy-aK-Pz0" secondAttribute="leading" id="DFD-7F-obg"/>
                             <constraint firstItem="NqM-Du-Sda" firstAttribute="top" secondItem="k6x-Sr-iyZ" secondAttribute="top" constant="90" id="NwR-al-IXg"/>
+                            <constraint firstItem="CCr-lU-WnU" firstAttribute="leading" secondItem="CNu-2m-n3W" secondAttribute="trailing" constant="10" id="WbV-tv-3dz"/>
                             <constraint firstItem="k6x-Sr-iyZ" firstAttribute="bottom" secondItem="Z3I-Vw-Y8u" secondAttribute="top" id="g2W-Pl-UeR"/>
+                            <constraint firstItem="CNu-2m-n3W" firstAttribute="centerY" secondItem="CCr-lU-WnU" secondAttribute="centerY" id="mv6-rj-qCK"/>
                             <constraint firstAttribute="trailing" secondItem="k6x-Sr-iyZ" secondAttribute="trailing" id="szm-Tt-FrS"/>
                             <constraint firstItem="NqM-Du-Sda" firstAttribute="top" secondItem="isk-TQ-OxV" secondAttribute="top" id="uB6-qo-g4l"/>
                         </constraints>

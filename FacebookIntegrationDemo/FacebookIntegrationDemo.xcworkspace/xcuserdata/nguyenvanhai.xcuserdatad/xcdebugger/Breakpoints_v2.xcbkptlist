@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookIntegrationDemo/RootViewController.m"
-            timestampString = "444049782.361122"
+            timestampString = "444735521.410072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-loginButtonTouchHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookIntegrationDemo/FriendsListViewController.m"
-            timestampString = "442492007.368519"
+            timestampString = "444739833.297866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "-sendInviteClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,12 +138,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookIntegrationDemo/FriendsListViewController.m"
-            timestampString = "443097864.059474"
+            timestampString = "444739833.297866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-sendInviteClicked:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FacebookIntegrationDemo/FriendsListViewController.m"
+            timestampString = "444739833.297866"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
+            landmarkName = "-askLive:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FacebookIntegrationDemo/RootViewController.m"
-            timestampString = "444304722.848213"
+            timestampString = "444738970.385904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-loginButtonTouchHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FacebookIntegrationDemo/FriendsListViewController.m"
-            timestampString = "444309611.2984"
+            filePath = "FacebookIntegrationDemo/RootViewController.m"
+            timestampString = "444739928.079121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-askLive:"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-loginButtonTouchHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

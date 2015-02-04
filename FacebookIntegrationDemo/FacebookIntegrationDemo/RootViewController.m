@@ -64,10 +64,6 @@
     // Check if user is cached and linked to Facebook, if so, bypass login
     if ([PFUser currentUser])
     {
-        [[PFFacebookUtils session] closeAndClearTokenInformation];
-        [[PFFacebookUtils session] close];
-        [[FBSession activeSession] closeAndClearTokenInformation];
-        [[FBSession activeSession] close];
         [FBSession setActiveSession:nil];
         [PFUser logOut];
         NSLog(@"User is %@", [PFUser currentUser]);
@@ -104,14 +100,27 @@
             }
             [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                 MLog(@"result;%@", result);
-                [[PFUser currentUser] setObject:result forKey:@"profile"];
-                [[PFUser currentUser]saveEventually:^(BOOL succeeded, NSError *error) {
-                    if (succeeded)
-                    {
-                        MLog(@"save profile success");
-                    }
-                }];
+                [[PFUser currentUser] setObject:result[@"data"][@"name"] forKey:@"fbUsername"];
+                [FBRequestConnection startWithGraphPath:@"/me/picture"
+                                             parameters:nil
+                                             HTTPMethod:@"GET"
+                                      completionHandler:^(
+                                                          FBRequestConnection *connection,
+                                                          id result2,
+                                                          NSError *error
+                                                          ) {
+                                          /* handle the result */
+                                          MLog(@"picture%@", result2);
+                                          [[PFUser currentUser] setObject:result2[@"data"][@"picture"] forKey:@"picture"];
+                                          [[PFUser currentUser]saveEventually:^(BOOL succeeded, NSError *error) {
+                                              if (succeeded)
+                                              {
+                                                  MLog(@"save picture success");
+                                              }
+                                          }];
+                                      }];
             }];
+            
             [self.loginButton setSelected:YES];
         }
     }];
