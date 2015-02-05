@@ -98,20 +98,20 @@
             } else {
                 NSLog(@"User with facebook logged in!");
             }
-            [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                MLog(@"result;%@", result);
-                [[PFUser currentUser] setObject:result[@"data"][@"name"] forKey:@"fbUsername"];
-                [FBRequestConnection startWithGraphPath:@"/me/picture"
-                                             parameters:nil
-                                             HTTPMethod:@"GET"
-                                      completionHandler:^(
-                                                          FBRequestConnection *connection,
-                                                          id result2,
-                                                          NSError *error
-                                                          ) {
-                                          /* handle the result */
-                                          MLog(@"picture%@", result2);
-                                          [[PFUser currentUser] setObject:result2[@"data"][@"picture"] forKey:@"picture"];
+            [FBRequestConnection startWithGraphPath:@"/me/picture"
+                                         parameters:nil
+                                         HTTPMethod:@"GET"
+                                  completionHandler:^(
+                                                      FBRequestConnection *connection,
+                                                      id result2,
+                                                      NSError *error
+                                                      ) {
+                                      /* handle the result */
+                                      MLog(@"picture%@", result2);
+                                      [[PFUser currentUser] setObject:result2[@"data"][@"picture"] forKey:@"picture"];
+                                      [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                          MLog(@"result;%@", result);
+                                          [[PFUser currentUser] setObject:result[@"data"][@"name"] forKey:@"fbUsername"];
                                           [[PFUser currentUser]saveEventually:^(BOOL succeeded, NSError *error) {
                                               if (succeeded)
                                               {
@@ -119,7 +119,9 @@
                                               }
                                           }];
                                       }];
-            }];
+                                  }];
+
+            
             
             [self.loginButton setSelected:YES];
         }

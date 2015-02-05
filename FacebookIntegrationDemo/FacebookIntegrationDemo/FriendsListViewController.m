@@ -199,11 +199,11 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     NSMutableDictionary* params;
     
     NSMutableArray *friendIDs = [NSMutableArray array];
-    [friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
+    //[friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
         NSLog(@"Friend named %@ with id %@", friend.name, friend.objectID);
-        //[friendIDs addObject:friend.objectID];
+        [friendIDs addObject:friend.objectID];
     }
 
     if (friendIDs) {
@@ -235,7 +235,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                                               // Case B: User clicked the "x" icon
                                                               NSLog(@"User canceled request.");
                                                           } else {
-                                                              NSLog(@"Request Sent.");
+                                                              NSLog(@"Request Sent:%@", result);
                                                           }
                                                       }}
                                               friendCache:ms_friendCache];
@@ -245,8 +245,6 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 {
     // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
     NSMutableArray *friendIDs = [NSMutableArray array];
-    //[friendIDs addObject:@"AVlhfAfk0_445AAqEl4JDyibi80P-Tgw6o8f_y_v6IUZd2iId9Z0FIkfhynAYvH_1cUiR001f98JikyVrX-PxHLbCIRtkVbLwsn9hQhFXulX8Q"];
-    //Jena-CA: AVmJHcXV-w3HQcDW2LCLuSA5gFenGrJMFGy04CJTIO9n8Vvbq13mwI_8mwEThBwaf4TNOGmvcMb5dDAE2p_HC38QUqWR2Oh2-oIZNFCLErH5Zw
     for (NSDictionary<FBGraphUser>* friend in self.friendslist)
     {
         NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
@@ -254,10 +252,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
         [friendIDs addObject:friend.objectID];
     }
      NSLog(@"Send To %@ ", friendIDs);
-//    
-//    SBJson4Writer *jsonWriter = [SBJson4Writer new];
-//    NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%@", @YES], kAskLiveId, nil];
-    NSString *challengeStr = kAskLiveId;//[jsonWriter stringWithObject:challenge];
+    NSString *challengeStr = kAskLiveId;
     
     
     // Create a dictionary of key/value pairs which are the parameters of the dialog
@@ -269,9 +264,17 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                      // 3. Suggest friends the user may want to request, could be game context specific?
                                      //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
                                      challengeStr, kRequestID,
+                                     kFBSharedName, @"name",
+                                     kFBCapture, @"caption",
+                                     kItuneLink, @"link",
                                      nil];
     
-    
+//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+//                                   kFBSharedName, @"name",
+//                                   kFBCapture, @"caption",
+//                                   kItuneLink, @"link",
+//                                   @"http://i.imgur.com/g3Qc1HN.png", @"picture",
+//                                   nil];
     
     if (ms_friendCache == NULL) {
         ms_friendCache = [[FBFrictionlessRecipientCache alloc] init];
@@ -281,7 +284,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
                                                   message:kAskLiveMessage
-                                                    title:@"Smashing!"
+                                                    title:@"Light It"
                                                parameters:params
                                                   handler:^(FBWebDialogResult result,
                                                             NSURL *resultURL,
@@ -294,7 +297,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                                               // Case B: User clicked the "x" icon
                                                               NSLog(@"User canceled request.");
                                                           } else {
-                                                              NSLog(@"Request Sent.");
+                                                              NSLog(@"Request Sent:%@", result);
                                                           }
                                                       }
                                                   }

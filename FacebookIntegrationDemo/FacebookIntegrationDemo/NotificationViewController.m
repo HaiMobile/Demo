@@ -105,7 +105,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
 {
     NSDictionary<FBGraphObject> *object = self.friendslist[indexPath.row];
     NSString *stringID = object[@"id"];
-    [self deleteRequestID:[NSString stringWithFormat:@"%@", stringID]];
+    [self deleteRequestID:[NSString stringWithFormat:@"%@", stringID] atIndex:indexPath.row];
 }
 
 - (NSDictionary*)parseURLParams:(NSString *)query {
@@ -120,7 +120,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     return params;
 }
 
-- (void)deleteRequestID:(NSString*)requestID
+- (void)deleteRequestID:(NSString*)requestID atIndex:(NSInteger)index
 {
     NSString *path = [NSString stringWithFormat:@"/%@", requestID];
     [FBRequestConnection startWithGraphPath:path
@@ -132,91 +132,12 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                               NSError *error
                                               ) {
                               /* handle the result */
-                              if (!error)
+    z                          if (!error)
                               {
                                   MLog(@"successful!");
+                                  [self.friendslist removeObjectAtIndex:index];
                                   [self.tableView reloadData];
                               }
                           }];
-}
-- (IBAction)done:(id)sender {
-    
-    // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
-    NSMutableArray *friendIDs = [NSMutableArray array];
-    [friendIDs addObject:@"1597812257117573"];
-    for (NSDictionary<FBGraphUser>* friend in self.friendslist)
-    {
-        NSString *friendProfilePhotoURLString = friend[@"picture"][@"data"][@"url"];
-        NSLog(@"Friend named %@ with id %@ url:%@", friend.name, friend.objectID, friendProfilePhotoURLString);
-        //[friendIDs addObject:friend.objectID];
-    }
-    NSInteger nScore = 0000;
-    
-    SBJson4Writer *jsonWriter = [SBJson4Writer new];
-    NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%ld", (long)nScore], @"challenge_score", nil];
-    NSString *challengeStr = [jsonWriter stringWithObject:challenge];
-    
-    
-    // Create a dictionary of key/value pairs which are the parameters of the dialog
-    
-    // 1. No additional parameters provided - enables generic Multi-friend selector
-    NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     // 2. Optionally provide a 'to' param to direct the request at a specific user
-                                     [friendIDs componentsJoinedByString:@","], @"to", // Ali
-                                     // 3. Suggest friends the user may want to request, could be game context specific?
-                                     //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
-                                     challengeStr, @"data",
-                                     nil];
-    
-    
-    
-    if (ms_friendCache == NULL) {
-        ms_friendCache = [[FBFrictionlessRecipientCache alloc] init];
-    }
-    
-    [ms_friendCache prefetchAndCacheForSession:nil];
-    
-    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:[NSString stringWithFormat:@"I just smashed %ld friends! Can you beat it?", (long)nScore]
-                                                    title:@"Smashing!"
-                                               parameters:params
-                                                  handler:^(FBWebDialogResult result,
-                                                            NSURL *resultURL,
-                                                            NSError *error) {
-                                                      if (error) {
-                                                          // Case A: Error launching the dialog or sending request.
-                                                          NSLog(@"Error sending request.");
-                                                      } else {
-                                                          if (result == FBWebDialogResultDialogNotCompleted) {
-                                                              // Case B: User clicked the "x" icon
-                                                              NSLog(@"User canceled request.");
-                                                          } else {
-                                                              NSLog(@"Request Sent.");
-                                                          }
-                                                      }
-                                                  }
-                                              friendCache:ms_friendCache];
-}
-- (void)action
-{
-    NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                     
-                                     // Optional parameter for sending request directly to user
-                                     // with UID. If not specified, the MFS will be invoked
-                                     @"RECIPIENT_USER_ID", @"to",
-                                     
-                                     // Give the action object request information
-                                     @"send", @"action_type",
-                                     @"YOUR_OBJECT_ID", @"object_id",
-                                     
-                                     nil];
-    
-    [FBWebDialogs
-     presentRequestsDialogModallyWithSession:nil
-     message:@"Take this bomb to blast your way to victory!"
-     title:nil
-     parameters:params
-     handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {}
-     ];
 }
 @end
