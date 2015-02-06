@@ -49,8 +49,9 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                               self.friendslist = [NSMutableArray arrayWithArray:friends];
                               [self.tableView reloadData];
                           }];
-
 }
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -120,6 +121,62 @@ static FBFrictionlessRecipientCache* ms_friendCache;
     return params;
 }
 
+#define kAcceptLiveId @"AcceptLive"
+#define kAcceptLiveMessage @"Accept live request"
+#define kRequestID @"RequestID"
+
+- (IBAction)accept:(id)sender
+{
+    // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
+    NSMutableArray *friendIDs = [NSMutableArray array];
+    for (FBGraphObject* object in self.friendslist)
+    {
+        MLog(@"object:%@", object);
+        [friendIDs addObject:object[@"from"][@"id"]];
+    }
+    NSLog(@"Send To %@ ", friendIDs);
+    NSString *challengeStr = kAcceptLiveId;
+    
+    
+    // Create a dictionary of key/value pairs which are the parameters of the dialog
+    
+    // 1. No additional parameters provided - enables generic Multi-friend selector
+    NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                     // 2. Optionally provide a 'to' param to direct the request at a specific user
+                                     [friendIDs componentsJoinedByString:@","], @"to", // Ali
+                                     // 3. Suggest friends the user may want to request, could be game context specific?
+                                     //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
+                                     challengeStr, kAcceptLiveId,
+                                     nil];
+    
+    if (ms_friendCache == NULL) {
+        ms_friendCache = [[FBFrictionlessRecipientCache alloc] init];
+    }
+    
+    [ms_friendCache prefetchAndCacheForSession:nil];
+    
+    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                  message:kAcceptLiveMessage
+                                                    title:@"Light It"
+                                               parameters:params
+                                                  handler:^(FBWebDialogResult result,
+                                                            NSURL *resultURL,
+                                                            NSError *error) {
+                                                      if (error) {
+                                                          // Case A: Error launching the dialog or sending request.
+                                                          NSLog(@"Error sending request.");
+                                                      } else {
+                                                          if (result == FBWebDialogResultDialogNotCompleted) {
+                                                              // Case B: User clicked the "x" icon
+                                                              NSLog(@"User canceled request.");
+                                                          } else {
+                                                              NSLog(@"Request Sent:%@", result);
+                                                          }
+                                                      }
+                                                  }
+                                              friendCache:ms_friendCache];
+}
+
 - (void)deleteRequestID:(NSString*)requestID atIndex:(NSInteger)index
 {
     NSString *path = [NSString stringWithFormat:@"/%@", requestID];
@@ -132,7 +189,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                               NSError *error
                                               ) {
                               /* handle the result */
-    z                          if (!error)
+                              if (!error)
                               {
                                   MLog(@"successful!");
                                   [self.friendslist removeObjectAtIndex:index];

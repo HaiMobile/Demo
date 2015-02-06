@@ -303,6 +303,7 @@ static FBFrictionlessRecipientCache* ms_friendCache;
                                                   }
                                               friendCache:ms_friendCache];
 }
+
 - (void)action
 {
     NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
